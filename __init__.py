@@ -20,6 +20,7 @@ class GeyserworxAPI:
     __API_BASE__ = 'gwa/'
     __TOPIC_BASE_GET__ = 'GWA'
     __TOPIC_BASE_SET__ = 'GWR'
+
     def __init__(
             self,
             session: ClientSession,
