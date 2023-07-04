@@ -1,23 +1,23 @@
-import enum
+from enum import Enum
 import json
 
 from aiohttp import ClientSession
 
 
-class PowerType(enum):
+class PowerType(Enum):
     AC = 'ACM'
     AC_BOOST = 'ACO'
     PV = 'PVM'
 
 
-class TemperatureType(enum):
+class TemperatureType(Enum):
     AC = 'ACT'
     AC_BOOST = 'ACOT'
     PV = 'PVT'
 
 
 class GeyserworxAPI:
-    __API_BASE__ = 'gwa/'
+    __API_BASE__ = 'gwa'
     __TOPIC_BASE_GET__ = 'GWA'
     __TOPIC_BASE_SET__ = 'GWR'
 
@@ -30,8 +30,8 @@ class GeyserworxAPI:
     ):
         self.geyser_serial_number = geyser_serial_number
         self.geyser_number = geyser_number
-        self.base_url_get = f'{base_url}{self.__API_BASE__}?topic={self.__TOPIC_BASE_GET__}/{self.geyser_serial_number}/{self.geyser_number}/'
-        self.base_url_set = f'{base_url}{self.__API_BASE__}?topic={self.__TOPIC_BASE_SET__}/{self.geyser_serial_number}/{self.geyser_number}/'
+        self.base_url_get = f'{base_url}/{self.__API_BASE__}?topic={self.__TOPIC_BASE_GET__}/{self.geyser_serial_number}/{self.geyser_number}/'
+        self.base_url_set = f'{base_url}/{self.__API_BASE__}?topic={self.__TOPIC_BASE_SET__}/{self.geyser_serial_number}/{self.geyser_number}/'
         self.session = session
 
     async def get_current_temperature(self) -> float:
